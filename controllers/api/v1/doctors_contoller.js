@@ -1,8 +1,11 @@
 const Doctor = require('../../../models/doctor');
 const jwt = require('jsonwebtoken');
 
+// for creating the doctor into the database
 module.exports.register = async function(req, res){
     try{
+
+        // in case password and confirm password did not match
         if(req.body.password != req.body.confirm_password){
             return res.status(500).json({
                 data:{
@@ -10,12 +13,17 @@ module.exports.register = async function(req, res){
                 }
             });
         }
+
+        // find the doctor with the username
         let doctor = await Doctor.findOne({username: req.body.username});
+
+        // if doctor not found then create a doctor
         if(!doctor){
-            await Doctor.create(req.body);
+            doctor = await Doctor.create(req.body);
             return res.status(200).json({
                 data:{
-                    message: "Doctor Registered"
+                    message: "Doctor Registered Successfully",
+                    Doctor: doctor
                 }
             });
         }else{
@@ -33,9 +41,14 @@ module.exports.register = async function(req, res){
     }
 }
 
+// for login the doctor we used passport jwt authentication
 module.exports.login = async function(req, res){
     try{
+
+        // find the doctor with the username from body
         let doctor = await Doctor.findOne({username: req.body.username});
+
+        // if doctor not found or password not matched
         if(!doctor || doctor.password != req.body.password){
             return res.status(500).json({
                 data:{
@@ -43,6 +56,8 @@ module.exports.login = async function(req, res){
                 }
             });
         }
+
+        // if doctor found and password matched then genrate a token
         return res.status(200).json({
             message : "Here is your token | keep it safe",
             token : jwt.sign(doctor.toJSON(), 'secret', {expiresIn : 1000*60*10})

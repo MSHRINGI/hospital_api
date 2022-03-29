@@ -9,7 +9,17 @@ const patientSchema = new mongoose.Schema({
         type: Number,
         unique: true,
         required: true
-    }
+    },
+    doctor: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Doctor'
+    },
+    reports:[
+        {
+            type : mongoose.Schema.Types.ObjectId,
+            ref : 'Report'
+        }
+    ]
 },{
     timestamps: true
 });

@@ -7,7 +7,6 @@ const passportJWT = require('./config/passport-jwt-strategy');
 
 app.use(express.urlencoded({ extended : true }));
 
-
 app.use('/', require('./routes'));
 
 app.listen(port,function(err){
