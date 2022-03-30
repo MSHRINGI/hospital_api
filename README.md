@@ -2,6 +2,7 @@
 
  Designed the server side for a hospital (Only the API)
  Tech Stack: Node.js & Mongo DB
+ Hosted URL : https://mshringi.github.io/hospital_api/
  
  # Theme:
 
@@ -32,7 +33,7 @@
             ▪ Can be either of: [Negative, Travelled-Quarantine, Symptoms-Quarantine, Positive-Admit]
         ◦ Date
 
-    4. Required Routes
+    4. Routes and URL
         ◦ /doctors/register → with username and password
         ◦ /doctors/login → returns the JWT to be used
         ◦ /patients/register 
