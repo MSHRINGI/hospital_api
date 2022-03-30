@@ -1,5 +1,6 @@
 const Doctor = require('../../../models/doctor');
 const jwt = require('jsonwebtoken');
+const env = require('../../../config/environment');
 
 // for creating the doctor into the database
 module.exports.register = async function(req, res){
@@ -60,7 +61,7 @@ module.exports.login = async function(req, res){
         // if doctor found and password matched then genrate a token
         return res.status(200).json({
             message : "Here is your token | keep it safe",
-            token : jwt.sign(doctor.toJSON(), 'secret', {expiresIn : 1000*60*10})
+            token : jwt.sign(doctor.toJSON(), env.jwt_secret, {expiresIn : 1000*60*10})
         });
 
     }catch(err){

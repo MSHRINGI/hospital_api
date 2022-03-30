@@ -31,7 +31,7 @@ module.exports.register = async function(req, res){
             await patient.populate('doctor', 'name username');
             return res.status(200).json({
                 data: {
-                    message:"Patient Created Successfully",
+                    message:"Patient Registered Successfully",
                     patient: patient
                 }
             })
