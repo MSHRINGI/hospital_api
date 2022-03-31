@@ -29,14 +29,14 @@
         ◦ After the checkup, create a Report
     • Patient Report will have the following fields
         ◦ Created by doctor
-        ◦ Status (You can use enums if you want to):
+        ◦ Status (Used enums):
             ▪ Can be either of: [Negative, Travelled-Quarantine, Symptoms-Quarantine, Positive-Admit]
         ◦ Date
 
     4. Routes and URL
-        ◦ /doctors/register → with username and password
-        ◦ /doctors/login → returns the JWT to be used
-        ◦ /patients/register 
-        ◦ /patients/:id/create_report
-        ◦ /patients/:id/all_reports → List all the reports of a patient oldest to latest
-        ◦ /reports/:status  → List all the reports of all the patients filtered by a specific status
+        ◦ http://localhost:8822/api/v1/doctors/register → with username and password
+        ◦ http://localhost:8822/api/v1/doctors/login → returns the JWT to be used
+        ◦ http://localhost:8822/api/v1/patients/register 
+        ◦ http://localhost:8822/api/v1/patients/:id/create_report
+        ◦ http://localhost:8822/api/v1/patients/:id/all_reports → List all the reports of a patient oldest to latest
+        ◦ http://localhost:8822/api/v1/reports/:status  → List all the reports of all the patients filtered by a specific status
